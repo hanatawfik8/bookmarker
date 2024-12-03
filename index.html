@@ -14,61 +14,65 @@
     <title>Bookmarker</title>
 </head>
 
-<body class="bg-success">
-    <header class="bg-info-subtle container">
+<body>
+    <header class="container py-5">
         <h1 class="text-center">Bookmarker</h1>
     </header>
 
     <main>
-        <section class="container bg-info p-1">
-            <section class="bg-warning px-md-4 px-2 py-3">
-                <h2 class="text-center">
+        <section class="container px-1">
+            <section class="px-md-4 px-2 py-3 add-bookmark-section">
+                <h2 class="text-center py-3">
                     <i class="fa-solid fa-bookmark"></i>
                     Bookmark your favorite sites
                     <i class="fa-solid fa-bookmark"></i>
                 </h2>
                 <form>
                     <div class="mb-4">
-                        <label for="siteName" class="form-label fw-medium">
+                        <label for="siteName" class="form-label fw-semibold">
                             <i class="fa-solid fa-book-bookmark"></i>
                             Site Name
                         </label>
                         <input type="text" class="form-control" id="siteName" placeholder="Bookmark Name">
                     </div>
                     <div class="mb-3">
-                        <label for="siteURL" class="form-label fw-medium">
+                        <label for="siteURL" class="form-label fw-semibold">
                             <i class="fa-solid fa-link"></i>
                             Site URL
                         </label>
                         <input type="text" class="form-control" id="siteURL" placeholder="Website URL">
                     </div>
-                    <button type="button" class="d-block m-auto btn btn-dark">Submit</button>
+                    <button type="button" class="d-block mx-auto btn btn-dark submit px-5 mt-4 mb-2">Submit</button>
                 </form>
             </section>
         </section>
 
-        <section class="container px-1 py-4 bg-danger">
+        <section class=" container px-1 py-4 bg-danger">
             <table class="table text-center">
                 <thead>
                     <tr>
-                        <th scope="col">Index</th>
-                        <th scope="col">Website Name</th>
-                        <th scope="col">Visit</th>
-                        <th scope="col">Delete</th>
+                        <th class="fw-semibold" scope="col">Index</th>
+                        <th class="fw-semibold" scope="col">Website Name</th>
+                        <th class="fw-semibold" scope="col">Visit</th>
+                        <th class="fw-semibold" scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td scope="row">1</td>
                         <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>
+                            <button class="btn btn-dark">
+                                <i class="fa-solid fa-eye"></i>
+                                Visit
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-dark">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Delete
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
