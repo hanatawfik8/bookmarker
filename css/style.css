@@ -50,6 +50,8 @@ h2 {
     font-family: var(--sec-title-ffamily);
     font-size: 1.5625rem;
     color: transparent;
+    width: fit-content;
+    margin: auto;
     background-image: linear-gradient(to right, #3ca55c, #b5ac49);
     background-clip: text;
     -webkit-background-clip: text;
