@@ -1,18 +1,21 @@
 var addBtn = document.getElementById('addBtn'),
     tableBody = document.getElementById('tableBody'),
+    siteName = document.getElementById('siteName'),
+    siteUrl = document.getElementById('siteURL'),
     bookmarksList = [];
 
-addBtn.addEventListener("click", addBookmark)
+checkLocalStorage();
+
+addBtn.addEventListener("click", addBookmark);
 
 function addBookmark() {
-    var siteName = document.getElementById('siteName'),
-        siteUrl = document.getElementById('siteURL'),
-        bookmark = {
-            name: siteName.value.trim(),
-            url: siteUrl.value.trim()
-        }
+    var bookmark = {
+        name: siteName.value.trim(),
+        url: siteUrl.value.trim()
+    }
     bookmarksList.push(bookmark);
     displayBookmark();
+    addToLocalStorage();
 }
 
 function displayBookmark() {
@@ -41,3 +44,15 @@ function displayBookmark() {
 
 }
 
+function addToLocalStorage() {
+    localStorage.setItem("bookmarksList", JSON.stringify(bookmarksList));
+}
+
+function getFromLocalStorage() {
+    return JSON.parse(localStorage.getItem("bookmarksList"));
+}
+
+function checkLocalStorage() {
+    bookmarksList = getFromLocalStorage() || [];
+    displayBookmark();
+}
