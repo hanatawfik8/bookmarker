@@ -14,6 +14,7 @@ function addBookmark() {
         url: siteUrl.value.trim()
     }
     bookmarksList.push(bookmark);
+    clearInput()
     displayBookmark();
     addToLocalStorage();
 }
@@ -61,4 +62,9 @@ function deleteBookmark(clicked) {
     bookmarksList.splice(clicked, 1);
     addToLocalStorage();
     displayBookmark();
+}
+
+function clearInput() {
+    siteName.value = null;
+    siteUrl.value = null;
 }
