@@ -32,7 +32,7 @@ function displayBookmark() {
                             </a>
                         </td>
                         <td>
-                            <button class="btn btn-dark">
+                            <button class="btn btn-dark" onclick="deleteBookmark(${i})">
                                 <i class="fa-solid fa-trash-can"></i>
                                 Delete
                             </button>
@@ -54,5 +54,11 @@ function getFromLocalStorage() {
 
 function checkLocalStorage() {
     bookmarksList = getFromLocalStorage() || [];
+    displayBookmark();
+}
+
+function deleteBookmark(clicked) {
+    bookmarksList.splice(clicked, 1);
+    addToLocalStorage();
     displayBookmark();
 }
