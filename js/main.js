@@ -2,6 +2,8 @@ var addBtn = document.getElementById('addBtn'),
     tableBody = document.getElementById('tableBody'),
     siteName = document.getElementById('siteName'),
     siteUrl = document.getElementById('siteURL'),
+    nameAlert = document.getElementById('nameAlert'),
+    urlAlert = document.getElementById('urlAlert'),
     bookmarksList = [];
 
 checkLocalStorage();
@@ -13,10 +15,12 @@ function addBookmark() {
         name: siteName.value.trim(),
         url: siteUrl.value.trim()
     }
-    bookmarksList.push(bookmark);
-    clearInput()
-    displayBookmark();
-    addToLocalStorage();
+    if (!isEmptyInput()) {
+        bookmarksList.push(bookmark);
+        displayBookmark();
+        addToLocalStorage();
+        clearInput();
+    }
 }
 
 function displayBookmark() {
@@ -67,4 +71,25 @@ function deleteBookmark(clicked) {
 function clearInput() {
     siteName.value = null;
     siteUrl.value = null;
+}
+
+function isEmptyInput() {
+    var isEmpty = false;
+    if (siteName.value == false) {
+        nameAlert.classList.replace('d-none', 'd-block')
+        isEmpty = true;
+        siteName.value = null;
+    }
+    else {
+        nameAlert.classList.replace('d-block', 'd-none')
+    }
+    if (siteUrl.value == false) {
+        urlAlert.classList.replace('d-none', 'd-block')
+        isEmpty = true;
+        siteUrl.value = null;
+    }
+    else {
+        urlAlert.classList.replace('d-block', 'd-none')
+    }
+    return isEmpty;
 }
