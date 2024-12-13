@@ -40,13 +40,13 @@ function displayBookmark() {
                         <td scope="row">${i + 1}</td>
                         <td>${bookmarksList[i].name}</td>
                         <td>
-                            <a class="btn btn-dark" href="${displayedUrl}" target="_blank">
+                            <a class="btn" id="visitBtn" href="${displayedUrl}" target="_blank">
                                 <i class="fa-solid fa-eye"></i>
                                 Visit
                             </a>
                         </td>
                         <td>
-                            <button class="btn btn-dark" onclick="deleteBookmark(${i})">
+                            <button class="btn btn-danger" onclick="deleteBookmark(${i})">
                                 <i class="fa-solid fa-trash-can"></i>
                                 Delete
                             </button>
