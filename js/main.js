@@ -15,8 +15,10 @@ function addBookmark() {
     var bookmark = {
         name: siteName.value.trim(),
         url: siteUrl.value.trim()
-    }
-    if (isRepeatedName(bookmark.name) || isRepeatedUrl(bookmark.url)) {
+    },
+        repeatedName = isRepeatedName(bookmark.name),
+        repeatedUrl = isRepeatedUrl(bookmark.url);
+    if (repeatedName || repeatedUrl) {
         return;
     }
     if (isValidName() && isValidUrl()) {
