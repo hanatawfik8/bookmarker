@@ -8,11 +8,18 @@
     --title-color: #352E28;
     --main-text-color: #272727;
     --title-bg-color: #FEC260;
+    --addBtn-bg-color: #d1512d;
+    --addBtn-hover-bg: #bb4120;
+    --btn-text-color: white;
+    --btn-transition: 0.3s all ease-in-out;
+    --visitBtn-bg-color: #9eb23b;
+    --visitBtn-hover-bg: #8a9e23;
 }
 
 body {
     font-family: var(--main-ffamily);
     background-color: var(--bg-color);
+    min-width: 360px;
 }
 
 /* **************** Header **************** */
@@ -40,6 +47,20 @@ h1::before {
 
 h1:hover::before {
     height: 70%;
+}
+
+#addBtn {
+    color: var(--btn-text-color);
+    background-color: var(--addBtn-bg-color);
+    transition: var(--btn-transition);
+}
+
+#addBtn:hover {
+    background-color: var(--addBtn-hover-bg);
+}
+
+#addBtn:active {
+    background-color: var(--addBtn-bg-color);
 }
 
 /* ***************************************** */
@@ -75,6 +96,20 @@ td {
 th,
 td {
     vertical-align: middle;
+}
+
+#visitBtn {
+    background-color: var(--visitBtn-bg-color);
+    color: var(--btn-text-color);
+    transition: var(--btn-transition);
+}
+
+#visitBtn:hover {
+    background-color: var(--visitBtn-hover-bg);
+}
+
+#visitBtn:active {
+    background-color: var(--visitBtn-bg-color);
 }
 
 @media screen and (max-width:500px) {
