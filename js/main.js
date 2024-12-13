@@ -91,7 +91,7 @@ function isValidUrl() {
 }
 
 function isValidName() {
-    var valid = /^[a-z0-9]+$/i;
+    var valid = /^[a-z0-9][a-z0-9_\-]*[a-z0-9_]?$/i;
     return (valid.test(siteName.value));
 }
 
@@ -112,11 +112,16 @@ function onInputURL() {
 
 function onInputName() {
     if (isValidName()) {
-        siteName.classList.remove("is-invalid")
-        siteName.classList.add("is-valid")
+        siteName.classList.remove("is-invalid");
+        siteName.classList.add("is-valid");
+        nameAlert.classList.replace('d-block', 'd-none')
     }
     else {
-        siteName.classList.remove("is-valid")
-        siteName.classList.add("is-invalid")
+        siteName.classList.remove("is-valid");
+        siteName.classList.add("is-invalid");
+        nameAlert.innerHTML = `Error: The name must start with a letter or number, 
+                            can only include letters, numbers, underscores (_), and hyphens (-), 
+                            and must end with a letter, number, or underscore (_).`
+        nameAlert.classList.replace('d-none', 'd-block')
     }
 }
