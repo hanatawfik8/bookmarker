@@ -16,7 +16,7 @@ function addBookmark() {
         name: siteName.value.trim(),
         url: siteUrl.value.trim()
     }
-    if (isRepeatedName(bookmark.name)) {
+    if (isRepeatedName(bookmark.name) || isRepeatedUrl(bookmark.url)) {
         return;
     }
     if (isValidName() && isValidUrl()) {
@@ -152,6 +152,19 @@ function isRepeatedName(name) {
             siteName.classList.add("is-invalid");
             nameAlert.innerHTML = `Error: Bookmark name cannot be repeated (Name is repeated at Bookmark ID = ${i + 1})`
             nameAlert.classList.replace('d-none', 'd-block')
+            return true;
+        }
+    }
+    return false;
+}
+
+function isRepeatedUrl(url) {
+    for (var i = 0; i < bookmarksList.length; i++) {
+        if (url == bookmarksList[i].url) {
+            siteUrl.classList.remove("is-valid")
+            siteUrl.classList.add("is-invalid")
+            urlAlert.innerHTML = `Error: Website URL cannot be repeated (URL is repeated at Bookmark ID = ${i + 1})`
+            urlAlert.classList.replace('d-none', 'd-block')
             return true;
         }
     }
