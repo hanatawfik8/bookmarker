@@ -22,6 +22,7 @@ function addBookmark() {
         addToLocalStorage();
         clearInput();
     }
+    isEmptyInput(bookmark.name, bookmark.url);
 }
 
 function displayBookmark() {
@@ -119,9 +120,24 @@ function onInputName() {
     else {
         siteName.classList.remove("is-valid");
         siteName.classList.add("is-invalid");
-        nameAlert.innerHTML = `Error: The name must start with a letter or number, 
+        nameAlert.innerHTML = `Error: The name cannot be empty, must start with a letter or number, 
                             can only include letters, numbers, underscores (_), and hyphens (-), 
                             and must end with a letter, number, or underscore (_).`
         nameAlert.classList.replace('d-none', 'd-block')
+    }
+}
+
+function isEmptyInput(name, url) {
+    if (!name) {
+        siteName.classList.remove("is-valid");
+        siteName.classList.add("is-invalid");
+        nameAlert.innerHTML = `Error: Bookmark Name cannot be empty`
+        nameAlert.classList.replace('d-none', 'd-block')
+    }
+    if (!url) {
+        siteUrl.classList.remove("is-valid");
+        siteUrl.classList.add("is-invalid");
+        urlAlert.innerHTML = `Error: Website URL cannot be empty`
+        urlAlert.classList.replace('d-none', 'd-block')
     }
 }
