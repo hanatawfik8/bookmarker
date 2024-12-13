@@ -7,7 +7,8 @@ var addBtn = document.getElementById('addBtn'),
     bookmarksList = [];
 
 checkLocalStorage();
-
+siteUrl.addEventListener("input", onInputURL);
+siteName.addEventListener("input", onInputName)
 addBtn.addEventListener("click", addBookmark);
 
 function addBookmark() {
@@ -15,7 +16,7 @@ function addBookmark() {
         name: siteName.value.trim(),
         url: siteUrl.value.trim()
     }
-    if (!isEmptyInput()) {
+    if (isValidName() && isValidUrl()) {
         bookmarksList.push(bookmark);
         displayBookmark();
         addToLocalStorage();
@@ -69,27 +70,49 @@ function deleteBookmark(clicked) {
 }
 
 function clearInput() {
+    siteName.classList.remove("is-valid");
     siteName.value = null;
+    siteUrl.classList.remove("is-valid");
     siteUrl.value = null;
+
 }
 
-function isEmptyInput() {
-    var isEmpty = false;
-    if (siteName.value == false) {
-        nameAlert.classList.replace('d-none', 'd-block')
-        isEmpty = true;
-        siteName.value = null;
+function isValidUrl() {
+    var valid;
+    var hasWWW = /^(https?:\/\/)?www\./i;
+    if (hasWWW.test(siteUrl.value)) {
+        valid = /^(https?:\/\/)?www\.[a-z0-9]([a-z0-9]|(\-[a-z])|(\-[0-9]))*(\.[a-z0-9]{2,})+(\/)?$/i;
+        return (valid.test(siteUrl.value));
     }
     else {
-        nameAlert.classList.replace('d-block', 'd-none')
+        valid = /^(https?:\/\/)?[a-z0-9]([a-z0-9]|(\-[a-z])|(\-[0-9]))*(\.[a-z0-9]{2,})+(\/)?$/i;
+        return (valid.test(siteUrl.value));
     }
-    if (siteUrl.value == false) {
-        urlAlert.classList.replace('d-none', 'd-block')
-        isEmpty = true;
-        siteUrl.value = null;
+}
+
+function isValidName() {
+    var valid = /^[a-z0-9]+$/i;
+    return (valid.test(siteName.value));
+}
+
+function onInputURL() {
+    if (isValidUrl()) {
+        siteUrl.classList.remove("is-invalid")
+        siteUrl.classList.add("is-valid")
     }
     else {
-        urlAlert.classList.replace('d-block', 'd-none')
+        siteUrl.classList.remove("is-valid")
+        siteUrl.classList.add("is-invalid")
     }
-    return isEmpty;
+}
+
+function onInputName() {
+    if (isValidName()) {
+        siteName.classList.remove("is-invalid")
+        siteName.classList.add("is-valid")
+    }
+    else {
+        siteName.classList.remove("is-valid")
+        siteName.classList.add("is-invalid")
+    }
 }
