@@ -99,10 +99,14 @@ function onInputURL() {
     if (isValidUrl()) {
         siteUrl.classList.remove("is-invalid")
         siteUrl.classList.add("is-valid")
+        urlAlert.classList.replace('d-block', 'd-none')
     }
     else {
         siteUrl.classList.remove("is-valid")
         siteUrl.classList.add("is-invalid")
+        urlAlert.innerHTML = `Error: The URL cannot be empty, and the domain extension (e.g., '.com', '.org')
+         must be present and at least 2 characters long.`
+        urlAlert.classList.replace('d-none', 'd-block')
     }
 }
 
