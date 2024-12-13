@@ -99,7 +99,7 @@ function isValidUrl() {
 }
 
 function isValidName() {
-    var valid = /^[a-z0-9][a-z0-9_\-]*[a-z0-9_]?$/i;
+    var valid = /^[a-z0-9][a-z0-9_\-]{0,10}[a-z0-9_]?$/i;
     return (valid.test(siteName.value));
 }
 
@@ -127,7 +127,7 @@ function onInputName() {
     else {
         siteName.classList.remove("is-valid");
         siteName.classList.add("is-invalid");
-        nameAlert.innerHTML = `Error: The name cannot be empty, must start with a letter or number, 
+        nameAlert.innerHTML = `Error: The name cannot be empty, should not exceed 12 characters, must start with a letter or number, 
                             can only include letters, numbers, underscores (_), and hyphens (-), 
                             and must end with a letter, number, or underscore (_).`
         nameAlert.classList.replace('d-none', 'd-block')
