@@ -10,6 +10,11 @@ checkLocalStorage();
 siteUrl.addEventListener("input", onInputURL);
 siteName.addEventListener("input", onInputName)
 addBtn.addEventListener("click", addBookmark);
+document.body.addEventListener("keypress", function (e) {
+    if (e.key == "Enter") {
+        addBookmark();
+    }
+})
 
 function addBookmark() {
     var bookmark = {
