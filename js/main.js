@@ -30,13 +30,15 @@ function addBookmark() {
 
 function displayBookmark() {
     var displayedList = ``;
+    var displayedUrl;
     for (var i = 0; i < bookmarksList.length; i++) {
+        displayedUrl = adjustUrl(bookmarksList[i].url);
         displayedList += `
                     <tr>
                         <td scope="row">${i + 1}</td>
                         <td>${bookmarksList[i].name}</td>
                         <td>
-                            <a class="btn btn-dark" href="${bookmarksList[i].url}" target="_blank">
+                            <a class="btn btn-dark" href="${displayedUrl}" target="_blank">
                                 <i class="fa-solid fa-eye"></i>
                                 Visit
                             </a>
@@ -169,4 +171,12 @@ function isRepeatedUrl(url) {
         }
     }
     return false;
+}
+
+function adjustUrl(inputUrl) {
+    var displayedUrl = inputUrl;
+    if (!(inputUrl.startsWith("http://")) && !(inputUrl.startsWith("https://"))) {
+        displayedUrl = "https://" + inputUrl;
+    }
+    return displayedUrl;
 }
