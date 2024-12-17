@@ -9,7 +9,7 @@ this project ensures a smooth and intuitive user experience.
 
 ## Features
 - **Create, Read, Delete** – Add new bookmarks, view existing ones, and remove them easily.  
-- **LocalStorage** – Data is securely stored using `localStorage`.
+- **LocalStorage** – Data is stored using `localStorage`.
 - **Name & URL Validation** – Provides clear error messages for invalid bookmark names and URLs.
    URL validation for excessive query parameters and multiple slashes isn't added yet.  
 - **URL Adjustment** – Automatically corrects common URL formats for easier browsing.  
